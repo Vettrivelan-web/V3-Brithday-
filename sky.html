@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Dear Kavitha!</title>
+    <style>
+        :root {
+            --sky-color-top: #00001a;
+            --sky-color-middle: #190033;
+            --sky-color-bottom: #000000;
+            --text-glow-1: #ff00ff; /* Pink glow */
+            --text-glow-2: #00ffff; /* Cyan glow */
+            --text-glow-3: rgba(255, 255, 255, 0.6); /* Subtle white glow */
+            --cake-frosting: #fff5e1;
+            --cake-base: #6b4226;
+            --plate-color: #e0e0e0;
+            --candle-color: #f0e68c;
+            --flame-color: #ffac33;
+            --star-color: rgba(255, 255, 255, 0.8);
+            --heart-color-1: rgba(255, 77, 109, 0.9); /* Pinkish Red */
+            --heart-color-2: rgba(255, 105, 180, 0.9); /* Hot Pink */
+            --heart-color-3: rgba(220, 20, 60, 0.9);  /* Crimson */
+            --heart-color-4: rgba(255, 20, 147, 0.9); /* Deep Pink */
+            --heart-color-5: rgba(255, 99, 71, 0.9); /* Tomato Red */
+            --kavithai-color: #f0f0f0; /* Light grey/off-white for poems */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, var(--sky-color-top), var(--sky-color-middle), var(--sky-color-bottom));
+            overflow: hidden;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column;
+            position: relative;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+        }
+
+        /* --- Stars Background --- */
+        .stars-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--star-color);
+            border-radius: 50%;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+            animation: twinkle 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        /* --- End Stars --- */
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 15px; /* Slightly reduced padding */
+            max-width: 90%; /* Ensure content doesn't stretch too wide */
+            margin-top: -40px; /* Pull container slightly up to compensate for cake margin */
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: calc(1.8em + 2vw); /* Slightly adjusted size */
+            font-family: 'cursive', 'Brush Script MT', sans-serif;
+            text-shadow: 0 0 8px var(--text-glow-1),
+                         0 0 15px var(--text-glow-1),
+                         0 0 25px var(--text-glow-2),
+                         0 0 35px var(--text-glow-2);
+            opacity: 0;
+            animation: fadeInGlow 2.0s ease-in-out 0.5s forwards; /* Finishes at 2.5s */
+            margin-bottom: 25px; /* Space below heading */
+            line-height: 1.3;
+        }
+
+        @keyframes fadeInGlow {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- Kavithai Styling --- */
+        .kavithai-container {
+            margin-top: 15px; /* Space below heading */
+            /* Increased margin-bottom to push cake further down */
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeInKavithai 1.5s ease-in-out 2.0s forwards; /* Start at 2s, finish at 3.5s (after heading) */
+            position: relative; /* Needed for z-index if needed */
+            z-index: 10;
+        }
+
+        .kavithai {
+            color: var(--kavithai-color);
+            font-size: calc(0.9em + 0.5vw); /* Responsive font size for poems */
+            line-height: 1.7; /* Increased line height for Tamil */
+            text-shadow: 0 0 5px var(--text-glow-3), /* Subtle white glow */
+                         0 0 10px var(--text-glow-2); /* Hint of cyan glow */
+            margin-bottom: 20px; /* Space between poems */
+            font-family: 'Latha', 'Catamaran', sans-serif; /* Tamil-friendly fonts */
+            font-weight: 500; /* Slightly bolder */
+        }
+
+        .kavithai:last-child {
+             margin-bottom: 0; /* Remove bottom margin from last poem */
+        }
+
+        @keyframes fadeInKavithai {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* --- End Kavithai Styling --- */
+
+
+        /* --- Cake Styling --- */
+        .cake-container {
+            position: relative;
+            /* Increased margin-top to push cake further down */
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(50px); /* Start slightly lower */
+            animation: revealCake 1.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) 3.5s forwards; /* Start after poems fade in */
+            z-index: 5;
+        }
+
+        .plate {
+            width: 180px;
+            height: 15px;
+            background-color: var(--plate-color);
+            border-radius: 50%;
+            margin: 0 auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+            top: 10px;
+        }
+
+        .cake {
+            width: 140px;
+            height: 90px;
+            background-color: var(--cake-base);
+            position: relative;
+            margin: -10px auto 0 auto;
+            border-radius: 8px 8px 0 0;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2);
+        }
+
+        .cake::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            left: -5px;
+            width: calc(100% + 10px);
+            height: 25px;
+            background-color: var(--cake-frosting);
+            border-radius: 8px 8px 5px 5px / 15px 15px 5px 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .candle {
+            width: 8px;
+            height: 35px;
+            background-color: var(--candle-color);
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px 3px 0 0;
+            z-index: 1;
+        }
+
+        .flame {
+            width: 10px;
+            height: 18px;
+            background-color: var(--flame-color);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scaleY(1) scaleX(1); opacity: 1; box-shadow: 0 0 5px #ffac33, 0 0 10px #ffac33; }
+            50% { transform: translateX(-45%) scaleY(0.95) scaleX(1.05); opacity: 0.9; }
+            100% { transform: translateX(-55%) scaleY(1.05) scaleX(0.95); opacity: 1; box-shadow: 0 0 6px #ffdd33, 0 0 12px #ffdd33;}
+        }
+
+        @keyframes revealCake {
+             0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        /* --- End Cake --- */
+
+
+        /* --- Heart Balloons Styling --- */
+        .hearts-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Behind text, cake */
+            pointer-events: none;
+        }
+
+        .heart-balloon {
+            position: absolute;
+            width: 50px;
+            height: 45px; /* Adjusted height for point */
+            bottom: -150px; /* Start below screen */
+            opacity: 0; /* Start hidden */
+            animation: flyUpHeart 15s linear infinite;
+        }
+
+        .heart-balloon::before,
+        .heart-balloon::after {
+            content: "";
+            position: absolute;
+            width: 25px; /* Half of the width */
+            height: 40px; /* Slightly less than height for curve */
+            background-color: var(--heart-color-1); /* Default color, will be overridden */
+            border-radius: 25px 25px 0 0; /* Top curve */
+        }
+
+        .heart-balloon::before {
+            left: 25px; /* Start at half width */
+            transform: rotate(-45deg);
+             transform-origin: 0 100%; /* Rotate from bottom-left */
+        }
+
+        .heart-balloon::after {
+            left: 0;
+             transform: rotate(45deg);
+             transform-origin: 100% 100%; /* Rotate from bottom-right */
+        }
+
+         /* String - attached via a separate span for easier positioning */
+        .heart-string {
+            position: absolute;
+            bottom: -5px; /* Below the point of the heart */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 60px; /* String length */
+            background: rgba(255, 255, 255, 0.5);
+            z-index: -1; /* Behind heart parts */
+        }
+
+
+        @keyframes flyUpHeart {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; } /* Fade in */
+            90% { opacity: 0.9; }
+            100% { transform: translateY(-120vh) rotate(15deg); opacity: 0; } /* Fly up */
+        }
+
+        /* Different colors, positions, delays for hearts */
+        .heart-balloon:nth-child(1) { left: 10%; animation-duration: 18s; animation-delay: 0.5s; }
+        .heart-balloon:nth-child(1)::before, .heart-balloon:nth-child(1)::after { background-color: var(--heart-color-1); }
+
+        .heart-balloon:nth-child(2) { left: 30%; animation-duration: 14s; animation-delay: 2.5s; }
+        .heart-balloon:nth-child(2)::before, .heart-balloon:nth-child(2)::after { background-color: var(--heart-color-2); }
+
+        .heart-balloon:nth-child(3) { left: 50%; animation-duration: 16s; animation-delay: 1.5s; }
+        .heart-balloon:nth-child(3)::before, .heart-balloon:nth-child(3)::after { background-color: var(--heart-color-3); }
+
+        .heart-balloon:nth-child(4) { left: 70%; animation-duration: 13s; animation-delay: 4s; }
+        .heart-balloon:nth-child(4)::before, .heart-balloon:nth-child(4)::after { background-color: var(--heart-color-4); }
+
+        .heart-balloon:nth-child(5) { left: 90%; animation-duration: 20s; animation-delay: 3s; }
+        .heart-balloon:nth-child(5)::before, .heart-balloon:nth-child(5)::after { background-color: var(--heart-color-5); }
+
+        /* --- End Heart Balloons --- */
+
+
+        /* --- Fireworks Styling --- */
+        .fireworks-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind balloons/cake/text */
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px; /* Particle size */
+            height: 4px;
+            border-radius: 50%;
+            opacity: 1;
+            background: white; /* Default, JS sets color */
+            box-shadow: 0 0 6px currentColor, 0 0 12px currentColor; /* Glow effect */
+            pointer-events: none;
+        }
+        /* --- End Fireworks --- */
+
+        /* --- Media Query for smaller screens --- */
+        @media (max-width: 600px) {
+             .container {
+                 margin-top: -20px; /* Adjust container margin for small screens */
+             }
+            h1 {
+                 font-size: calc(1.5em + 3vw); /* Adjust heading size */
+                 margin-bottom: 20px;
+            }
+            .kavithai {
+                 font-size: calc(0.8em + 1vw); /* Adjust poem size */
+                 line-height: 1.6;
+            }
+            .kavithai-container {
+                 margin-bottom: 40px; /* Adjust space below poems */
+            }
+            .cake-container {
+                 transform: scale(0.9); /* Slightly scale down cake */
+                 margin-top: 20px; /* Adjust space above cake */
+            }
+            .plate { width: 160px; }
+            .cake { width: 120px; height: 80px;}
+            .heart-balloon { width: 40px; height: 36px; }
+            .heart-balloon::before, .heart-balloon::after { width: 20px; height: 32px; }
+            .heart-balloon::before { left: 20px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Stars Background -->
+    <div class="stars-background" id="stars-background"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Happy Birthday<br>my dear sweet wife<br>Kavitha!</h1>
+
+        <!-- Kavithai Section -->
+        <div class="kavithai-container">
+            <p class="kavithai">
+                கவிதை என்ற பெயரழகி, <br>
+                என் வாழ்வின் பொருளழகி, <br>
+                உனது பிறந்த நாளில் <br>
+                பூக்களெல்லாம் உனக்காக பூக்கட்டும்!
+            </p>
+            <p class="kavithai">
+                நிலவின் ஒளியே, மலரின் மணமே, <br>
+                என் அன்பின் கவிதையே, <br>
+                இனிய பிறந்தநாள் காணும் உனக்கு, <br>
+                என் இதயம் கனிந்த வாழ்த்துக்கள்!
+            </p>
+        </div>
+        <!-- End Kavithai Section -->
+
+        <!-- Cake Section -->
+        <div class="cake-container">
+             <div class="cake">
+                 <div class="candle">
+                     <div class="flame"></div>
+                 </div>
+             </div>
+             <div class="plate"></div>
+        </div>
+        <!-- End Cake Section -->
+    </div>
+
+    <!-- Hearts Background Animation -->
+    <div class="hearts-container">
+        <div class="heart-balloon"><div class="heart-string"></div></div>
+        <div class="heart-balloon"><div class="heart-string"></div></div>
+        <div class="heart-balloon"><div class="heart-string"></div></div>
+        <div class="heart-balloon"><div class="heart-string"></div></div>
+        <div class="heart-balloon"><div class="heart-string"></div></div>
+    </div>
+
+    <!-- Fireworks Background Animation -->
+    <div class="fireworks-container" id="fireworks-container"></div>
+
+    <!-- Audio Element for Fireworks -->
+    <!-- !!! IMPORTANT: Replace 'firework_sound.mp3' with your actual sound file name !!! -->
+    <!-- !!! Place the sound file in the same directory as this HTML file !!! -->
+    <audio id="fireworkSound" src="firework_sound.mp3" preload="auto"></audio>
+
+    <script>
+        // --- Star Generation ---
+        const starsContainer = document.getElementById('stars-background');
+        const numberOfStars = 150;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 3}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // --- Fireworks ---
+        const fireworksContainer = document.getElementById('fireworks-container');
+        const fireworkSound = document.getElementById('fireworkSound'); // Get the audio element
+        const particleCount = 60;
+        const colors = ['#ffdd00', '#00ffdd', '#ff00ff', '#ff5555', '#55ff55', '#5555ff', '#ffffff', '#ff9900', '#cc00ff'];
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.background = color;
+            particle.style.color = color;
+
+            fireworksContainer.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 8 + 4;
+            const gravity = 0.08;
+            const friction = 0.98;
+            const fadeDuration = 1000 + Math.random() * 500;
+            const startTime = performance.now();
+
+            let vx = Math.cos(angle) * velocity;
+            let vy = Math.sin(angle) * velocity;
+            let currentX = x;
+            let currentY = y;
+            let currentOpacity = 1;
+
+            function animateParticle(currentTime) {
+                const elapsedTime = currentTime - startTime;
+
+                currentX += vx;
+                currentY += vy;
+                vy += gravity;
+                vx *= friction;
+                vy *= friction;
+
+                 if (elapsedTime > 200) {
+                     currentOpacity = 1 - (elapsedTime - 200) / (fadeDuration - 200);
+                     currentOpacity = Math.max(0, currentOpacity);
+                 }
+
+                particle.style.transform = `translate(${currentX - x}px, ${currentY - y}px)`;
+                particle.style.opacity = currentOpacity;
+
+                if (currentOpacity <= 0 || elapsedTime >= fadeDuration) {
+                     if (particle.parentNode === fireworksContainer) {
+                        fireworksContainer.removeChild(particle);
+                     }
+                } else {
+                    requestAnimationFrame(animateParticle);
+                }
+            }
+            requestAnimationFrame(animateParticle);
+        }
+
+        // Function to launch a single firework burst and play sound
+        function launchSingleFirework() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.1;
+
+            // Play sound for the burst
+            if (fireworkSound) {
+                fireworkSound.currentTime = 0; // Reset sound to start
+                fireworkSound.play().catch(error => {
+                    // Audio play might be blocked by the browser initially
+                    console.warn("Audio play failed (likely browser policy):", error);
+                });
+            }
+
+            // Create particles for the burst
+            for (let i = 0; i < particleCount; i++) {
+                 setTimeout(() => createParticle(x, y), Math.random() * 100);
+            }
+        }
+
+        function launchMultipleFireworks(count = 3) {
+            for (let i = 0; i < count; i++) {
+                // Stagger the launch slightly for better visual/audio separation
+                setTimeout(launchSingleFirework, i * 200); // Increased stagger time
+            }
+        }
+
+        // Start launching fireworks after elements have likely appeared
+        setTimeout(() => {
+            launchMultipleFireworks(4); // Initial volley
+            setInterval(() => launchMultipleFireworks(Math.floor(Math.random() * 3) + 2),
+                2500 + Math.random() * 1500);
+        }, 4500); // Initial delay
+
+    </script>
+
+</body>
+</html>
